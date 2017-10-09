@@ -9,4 +9,4 @@ logging:
     level:
         cxy.example: TRACE
 
-testCount: 8899
+testCount: 111
