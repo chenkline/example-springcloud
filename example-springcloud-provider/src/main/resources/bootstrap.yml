@@ -1,0 +1,28 @@
+server:
+    port: 7201
+    
+eureka:
+    client:
+        registerWithEureka: true
+        fetchRegistry: true    
+        serviceUrl:
+            defaultZone: http://localhost:9090/eureka/ #,http://localhost:9091/eureka/,http://localhost:9092/eureka/
+
+spring:
+    application:
+        name: example-provider
+    cloud:
+        config:
+            name: example-provider
+            profile: dev
+            label: master
+            failFast: true
+            discovery:
+                enabled: true
+                serviceId: config-server
+    rabbitmq:
+        host: 192.168.92.141 # 172.30.2.59 # localhost
+        port: 5673 #5672
+        username: admin
+        password: admin
+        

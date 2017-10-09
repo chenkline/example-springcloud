@@ -1,0 +1,37 @@
+yum install -y build-essential make gcc gcc-c++ autoconf automake m4 glibc-devel xmlto perl openssl openssl-devel unixODBC unixODBC-devel ncurses-devel
+#yum install -y kernel-devel 
+#yum install tk tc
+
+./otp_build autoconf
+#./configure --prefix=/usr/local/erlang
+./configure --prefix=/docker-vol/otp-OTP-20.1-bin
+make && make install
+
+# 设置 erlang bin 到path变量
+
+# 设置 rabbitmq sbin 到path变量
+
+# 开启管理UI
+rabbitmq-plugins enable rabbitmq_management
+
+#启动服务
+rabbitmq-server 
+
+#设置管理员账户和权限
+rabbitmqctl add_user admin admin
+rabbitmqctl set_user_tags admin administrator
+rabbitmqctl  set_permissions -p / admin '.*' '.*' '.*'
+
+# 在宿主机设置端口转发
+RMQ_IP=172.17.0.2
+echo RMQ_IP=$RMQ_IP
+firewall-cmd --permanent --zone=public --add-forward-port=port=4369:proto=tcp:toport=4369:toaddr=$RMQ_IP
+firewall-cmd --permanent --zone=public --add-forward-port=port=5673:proto=tcp:toport=5672:toaddr=$RMQ_IP
+firewall-cmd --permanent --zone=public --add-forward-port=port=25672:proto=tcp:toport=25672:toaddr=$RMQ_IP
+firewall-cmd --permanent --zone=public --add-forward-port=port=15672:proto=tcp:toport=15672:toaddr=$RMQ_IP
+firewall-cmd --permanent --zone=public --add-forward-port=port=61613:proto=tcp:toport=61613:toaddr=$RMQ_IP
+firewall-cmd --permanent --zone=public --add-forward-port=port=1883:proto=tcp:toport=1883:toaddr=$RMQ_IP
+firewall-cmd --permanent --zone=public --add-forward-port=port=15674:proto=tcp:toport=15674:toaddr=$RMQ_IP
+firewall-cmd --permanent --zone=public --add-forward-port=port=15675:proto=tcp:toport=15675:toaddr=$RMQ_IP
+firewall-cmd --reload
+

@@ -1,0 +1,21 @@
+
+1. 启动 git 服务器， 目前直接使用 github
+
+2. 添加配置文件到git本地仓库， 上传配置文件到 git 远程仓库
+
+3. 启动rabbitMQ服务器
+
+4. 启动  eureka 注册中心
+
+5. 启动分布式配置中心
+
+6. 启动 应用服务器
+
+7. 修改配置文件  添加修改的文件到git本地仓库， 上传配置文件到 git 远程仓库
+
+8. 向分布式配置中心消息总线发送 配置刷新指令
+curl -X POST http://sz-shijin11.iboxpay.com:7001/bus/refresh
+curl -X POST http://sz-shijin11.iboxpay.com:7001/bus/refresh?destination=customers:9000
+ 
+9. 新的配置在应用服务器上是否已经生效
+

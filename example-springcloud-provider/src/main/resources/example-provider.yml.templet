@@ -1,0 +1,14 @@
+#server:
+#    port: 7201
+
+spring:
+    application:
+        name: example-provider
+        
+
+logging:
+    level:
+        cxy.example: TRACE
+
+
+testCount: 1234512

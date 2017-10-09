@@ -1,0 +1,35 @@
+       
+server:
+    port: 7001
+
+logging:
+    level:
+        cxy.example: TRACE
+
+spring:
+    application:
+        name: config-server
+    cloud:
+        config:
+            server:
+                svn:
+                    uri: https://127.0.0.1/svn/demo/demo-config-repo
+                git:
+                    uri: https://github.com/chenkline/example-springcloud
+                    searchPaths: example-config-repo-git/examples/v2.0
+                    username: chen.kline@gmail.com
+                    password: klin112133
+                    
+    rabbitmq:
+        host: 192.168.92.141 # 172.30.2.59
+        port: 5673 #5672
+        username: admin
+        password: admin
+
+eureka:
+    client:
+        registerWithEureka: true
+        fetchRegistry: true        
+        serviceUrl:
+            defaultZone: http://localhost:9090/eureka/ #,http://localhost:9091/eureka/,http://localhost:9092/eureka/
+
