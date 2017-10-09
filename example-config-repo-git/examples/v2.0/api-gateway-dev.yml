@@ -1,0 +1,25 @@
+#server:
+#    port: 7100
+
+spring:
+    application:
+        name: api-gateway
+    rabbitmq:
+        host: localhost
+        port: 5672
+        username: springcloud
+        password: 123456
+        
+logging:
+    level:
+        cxy.example: TRACE
+		
+zuul:
+    routes:
+        api-compute:
+            path: /api-compute/**
+            serviceId: provider
+        api-from:
+            path: /api-from/**
+            serviceId: example
+            

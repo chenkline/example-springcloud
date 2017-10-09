@@ -1,0 +1,4 @@
+from: jhiot-default-2.0
+
+test:
+    name: default-name

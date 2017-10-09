@@ -1,0 +1,13 @@
+#server:
+#    port: 7002
+
+spring:
+    application:
+        name: example
+        
+logging:
+    level:
+        cxy.example: TRACE
+
+from: jhiot-dev-2.2
+testCount: 3333

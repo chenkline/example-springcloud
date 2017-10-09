@@ -1,0 +1,10 @@
+#server:
+#    port: 7401
+
+spring:
+    application:
+        name: consumer-feign
+
+logging:
+    level:
+        cxy.example: TRACE
